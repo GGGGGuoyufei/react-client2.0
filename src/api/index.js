@@ -17,3 +17,23 @@ export const reqUpdateCategory = ({categoryId,categoryName}) => ajax.post('/mana
   categoryId,
   categoryName
 })
+//获取商品分类列表
+export const reqShopsList = ((pageNum, pageSize)=> ajax('/manage/product/list',{
+  params: { // 页码 每页条目数
+    pageNum,
+    pageSize
+  }
+}))
+//根据ID/Name搜索产品分页列表
+export const reqSearchProducts = ({
+  pageNum,
+  pageSize,
+  searchName,
+  searchType 
+}) => ajax('/manage/product/search', {
+params: {
+  pageNum,
+  pageSize,
+  [searchType]: searchName,
+}
+})
