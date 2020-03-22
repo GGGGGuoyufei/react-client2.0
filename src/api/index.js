@@ -37,3 +37,34 @@ params: {
   [searchType]: searchName,
 }
 })
+//对商品进行上架/下架处理
+export const reqUpdateStatus =((productId,status)=> ajax.post('/manage/product/updateStatus',{
+  productId,
+  status
+}))
+/* 删除图片 */
+export const reqDeleteImg = (name) => ajax.post('/manage/img/delete', {name})
+
+/* 添加/修改商品 */
+export const reqAddUpdateProduct = (product) => ajax.post(
+    '/manage/product/' + (product._id ? 'update' : 'add'), 
+    product
+)
+
+// 获取所有角色的列表
+export const reqRoles = () => ajax('/manage/role/list')
+// 添加角色
+export const reqAddRole = (roleName) => ajax.post('/manage/role/add', {
+  roleName
+})
+// 更新角色
+export const reqUpdateRole = (role) => ajax.post('/manage/role/update', role)
+
+// 获取所有用户的列表
+export const reqUsers = () => ajax('/manage/user/list')
+// 删除指定用户
+export const reqDeleteUser = (userId) => ajax.post('/manage/user/delete', {
+  userId
+})
+// 添加/更新用户
+export const reqAddOrUpdateUser = (user) => ajax.post('/manage/user/' + (user._id ? 'update' : 'add'), user)
